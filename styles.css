@@ -1,53 +1,40 @@
+/* Стили для сине-голубого прямоугольника с текстом */
 .header {
   background: linear-gradient(to right, #1e90ff, #87cefa); /* Синий и голубой градиент */
   color: white;
   text-align: center;
-  padding: 20px 0; /* Отступ сверху и снизу */
+  padding: 20px 0; /* Отступы сверху и снизу */
   font-size: 24px;
   font-weight: bold;
-  position: relative;
   width: 100%;
-}
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
+  box-sizing: border-box; /* Чтобы учитывались отступы */
+  position: fixed;
+  top: 0; /* Чтобы прямоугольник был сверху страницы */
+  left: 0;
+  z-index: 1000; /* Чтобы прямоугольник был поверх других элементов */
 }
 
+/* Основные стили для контейнера */
 .container {
-    width: 80%;
-    margin: 0 auto;
+    margin-top: 80px; /* Отступ от верхнего прямоугольника */
     padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-}
-
+/* Стиль для вопросов */
 .question {
     margin-bottom: 20px;
 }
 
+/* Стили для кнопки */
 button {
     background-color: #4CAF50;
     color: white;
-    border: none;
     padding: 10px 20px;
+    border: none;
     cursor: pointer;
-    font-size: 16px;
-    display: block;
-    margin: 0 auto;
 }
 
 button:hover {
     background-color: #45a049;
-}
-
-#result {
-    margin-top: 20px;
-    text-align: center;
 }
