@@ -1,3 +1,11 @@
+.header {
+  background: linear-gradient(to right, #1e90ff, #87cefa); /* Синий и голубой градиент */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
