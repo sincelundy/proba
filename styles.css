@@ -2,9 +2,11 @@
   background: linear-gradient(to right, #1e90ff, #87cefa); /* Синий и голубой градиент */
   color: white;
   text-align: center;
-  padding: 10px 0;
+  padding: 20px 0; /* Отступ сверху и снизу */
   font-size: 24px;
   font-weight: bold;
+  position: relative;
+  width: 100%;
 }
 body {
     font-family: Arial, sans-serif;
