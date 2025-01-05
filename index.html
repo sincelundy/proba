@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест для экзамена</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Тест для экзамена</h1>
+        <form id="testForm">
+            <div class="question">
+                <p>Вопрос 1: Что такое HTML?</p>
+                <label>
+                    <input type="radio" name="q1" value="a"> A) Язык программирования
+                </label><br>
+                <label>
+                    <input type="radio" name="q1" value="b"> B) Язык разметки
+                </label><br>
+                <label>
+                    <input type="radio" name="q1" value="c"> C) Операционная система
+                </label><br>
+            </div>
+
+            <div class="question">
+                <p>Вопрос 2: Что такое CSS?</p>
+                <label>
+                    <input type="radio" name="q2" value="a"> A) Язык программирования
+                </label><br>
+                <label>
+                    <input type="radio" name="q2" value="b"> B) Язык разметки
+                </label><br>
+                <label>
+                    <input type="radio" name="q2" value="c"> C) Язык для стилизации веб-страниц
+                </label><br>
+            </div>
+
+            <button type="button" id="submitBtn">Проверить ответы</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
