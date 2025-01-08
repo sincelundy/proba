@@ -13,47 +13,54 @@
         Стоматология, 3 курс
     </div>
 
-    <div class="main-content">
-        <div class="questions-container">
-            <h1>Тест для экзамена</h1>
-            <form id="testForm">
-                <div class="question">
-                    <p>Вопрос 1: Что такое HTML?</p>
-                    <label>
-                        <input type="radio" name="q1" value="a"> A) Язык программирования
-                    </label><br>
-                    <label>
-                        <input type="radio" name="q1" value="b"> B) Язык разметки
-                    </label><br>
-                    <label>
-                        <input type="radio" name="q1" value="c"> C) Операционная система
-                    </label><br>
+    <div class="container">
+        <div class="main-content">
+            <!-- Контейнер для вопросов -->
+            <div class="questions-container">
+                <h1>Тест для экзамена</h1>
+                <form id="testForm">
+                    <div class="question">
+                        <p>Вопрос 1: Что такое HTML?</p>
+                        <label>
+                            <input type="radio" name="q1" value="a"> A) Язык программирования
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q1" value="b"> B) Язык разметки
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q1" value="c"> C) Операционная система
+                        </label><br>
+                    </div>
+
+                    <div class="question">
+                        <p>Вопрос 2: Что такое CSS?</p>
+                        <label>
+                            <input type="radio" name="q2" value="a"> A) Язык программирования
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q2" value="b"> B) Язык разметки
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q2" value="c"> C) Язык для стилизации веб-страниц
+                        </label><br>
+                    </div>
+
+                    <button type="button" id="submitBtn">Проверить ответы</button>
+                </form>
+
+                <!-- Выводим результат проверки -->
+                <div id="result"></div>
+            </div>
+
+            <!-- Контейнер для строки поиска -->
+            <div class="search-container">
+                <!-- Поле для поиска -->
+                <input type="text" id="transparentSearch" placeholder="Введите вопрос..." />
+
+                <!-- Результат поиска -->
+                <div id="resultBox" class="hidden">
+                    Ответ: <span id="answer"></span>
                 </div>
-
-                <div class="question">
-                    <p>Вопрос 2: Что такое CSS?</p>
-                    <label>
-                        <input type="radio" name="q2" value="a"> A) Язык программирования
-                    </label><br>
-                    <label>
-                        <input type="radio" name="q2" value="b"> B) Язык разметки
-                    </label><br>
-                    <label>
-                        <input type="radio" name="q2" value="c"> C) Язык для стилизации веб-страниц
-                    </label><br>
-                </div>
-
-                <button type="button" id="submitBtn">Проверить ответы</button>
-            </form>
-            <div id="result"></div>
-        </div>
-
-        <div class="search-container">
-            <input type="text" id="transparentSearch" placeholder="Введите вопрос..." />
-
-            <!-- Результат поиска -->
-            <div id="resultBox" class="hidden">
-                Ответ: <span id="answer"></span>
             </div>
         </div>
     </div>
