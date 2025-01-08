@@ -1,5 +1,4 @@
 console.log("Скрипт подключён!") ;
-
 // Правильные ответы
 const correctAnswers = {
     q1: 'b',
@@ -30,10 +29,20 @@ const database = [
     { question: "Что делает JavaScript?", answer: "Добавляет интерактивность" }
 ];
 
-// Функция для поиска ответа
+// Функция для поиска ответа с использованием Juzzy Search
 function searchAnswer(query) {
-    const result = database.find(item => item.question.toLowerCase().includes(query.toLowerCase()));
-    return result ? result.answer : "Ответ не найден";
+    const searcher = new JuzzySearch(database, {
+        key: 'question', // Указываем, что мы будем искать по полю "question"
+        threshold: 0.3, // Порог для нечеткого совпадения, чем меньше значение, тем точнее
+        ignoreCase: true // Игнорируем регистр
+    });
+
+    const results = searcher.search(query);
+    if (results.length > 0) {
+        return results[0].answer; // Возвращаем ответ на первый найденный вопрос
+    } else {
+        return "Ответ не найден";
+    }
 }
 
 // Слушаем ввод текста в поле
@@ -49,10 +58,11 @@ document.getElementById("transparentSearch").addEventListener("input", (event) =
     const answerBox = document.getElementById("answer");
 
     if (query.length > 0) {
-        resultBox.style.display = "block"; // Отображаем результат
+        resultBox.classList.remove("hidden");
+        resultBox.classList.add("visible");
         answerBox.textContent = answer;
     } else {
-        resultBox.style.display = "none"; // Скрываем результат, если поле пустое
+        resultBox.classList.remove("visible");
+        resultBox.classList.add("hidden");
     }
 });
-
