@@ -1,3 +1,4 @@
+
 /* Стили для сине-голубого прямоугольника с текстом */
 .header {
   background: linear-gradient(to right, #1e90ff, #87cefa); /* Синий и голубой градиент */
@@ -7,37 +8,39 @@
   font-size: 24px;
   font-weight: bold;
   width: 100%;
-  box-sizing: border-box; /* Чтобы учитывались отступы */
+  box-sizing: border-box; /* Учитываем отступы */
   position: fixed;
-  top: 0; /* Чтобы прямоугольник был сверху страницы */
+  top: 0; /* Закрепляем сверху страницы */
   left: 0;
-  z-index: 1000; /* Чтобы прямоугольник был поверх других элементов */
+  z-index: 1000; /* Поверх других элементов */
 }
 
 /* Основные стили для контейнера */
 .container {
-    margin-top: 80px; /* Отступ от верхнего прямоугольника */
-    padding: 20px;
-    font-family: Arial, sans-serif;
+  margin-top: 100px; /* Отступ от верхнего прямоугольника */
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
-/* Стиль для вопросов */
+/* Стили для вопросов */
 .question {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* Стили для кнопки */
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+  background-color: #4CAF50; /* Зеленый фон */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 button:hover {
-    background-color: #45a049;
+  background-color: #45a049; /* Более темный зеленый при наведении */
 }
+
 /* Стили прозрачного поля поиска */
 #transparentSearch {
   opacity: 0.2; /* Поле прозрачное */
@@ -67,13 +70,15 @@ button:hover {
   position: absolute;
   top: 60px; /* Расстояние от поля ввода */
   left: 20px;
-  background-color: #f1f1f1;
+  background-color: #f9f9f9;
   border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 10px;
   width: 300px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   color: black;
+  z-index: 1000;
 }
 
 /* Скрытие результата */
