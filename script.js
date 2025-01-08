@@ -46,7 +46,8 @@ document.getElementById("transparentSearch").addEventListener("input", (event) =
     // Показываем результат
     const resultBox = document.getElementById("resultBox");
     const answerBox = document.getElementById("answer");
-
+console.log(resultBox); 
+    console.log(answerBox);
     if (query.length > 0) {
         resultBox.classList.remove("hidden");
         resultBox.classList.add("visible");
