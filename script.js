@@ -1,4 +1,5 @@
 console.log("Скрипт подключён!") ;
+
 // Правильные ответы
 const correctAnswers = {
     q1: 'b',
@@ -19,7 +20,7 @@ document.getElementById('submitBtn').addEventListener('click', function () {
 
     // Показываем результат
     const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = `Вы набрали ${score} из ${Object.keys(correctAnswers).length} баллов.`;
+    resultDiv.innerHTML = Вы набрали ${score} из ${Object.keys(correctAnswers).length} баллов.;
 });
 
 // База данных вопросов и ответов
@@ -46,14 +47,12 @@ document.getElementById("transparentSearch").addEventListener("input", (event) =
     // Показываем результат
     const resultBox = document.getElementById("resultBox");
     const answerBox = document.getElementById("answer");
-console.log(resultBox); 
-    console.log(answerBox);
+
     if (query.length > 0) {
-        resultBox.classList.remove("hidden");
-        resultBox.classList.add("visible");
+        resultBox.style.display = "block"; // Отображаем результат
         answerBox.textContent = answer;
     } else {
-        resultBox.classList.remove("visible");
-        resultBox.classList.add("hidden");
+        resultBox.style.display = "none"; // Скрываем результат, если поле пустое
     }
 });
+
