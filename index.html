@@ -8,14 +8,14 @@
 </head>
 <body>
 
-    <!-- Верхний прямоугольник с текстом -->
+    <!-- Сине-голубой прямоугольник с текстом -->
     <div class="header">
         Стоматология, 3 курс
     </div>
 
     <div class="container">
         <div class="main-content">
-            <!-- Контейнер для теста -->
+            <!-- Контейнер для вопросов -->
             <div class="questions-container">
                 <h1>Тест для экзамена</h1>
                 <form id="testForm">
@@ -45,11 +45,10 @@
                         </label><br>
                     </div>
 
-                    <!-- Кнопка проверки -->
                     <button type="button" id="submitBtn">Проверить ответы</button>
                 </form>
 
-                <!-- Результат проверки -->
+                <!-- Выводим результат проверки -->
                 <div id="result"></div>
             </div>
 
@@ -59,7 +58,7 @@
                 <input type="text" id="transparentSearch" placeholder="Введите вопрос..." />
 
                 <!-- Результат поиска -->
-                <div id="resultBox" class="hidden">
+                <div id="resultBox">
                     Ответ: <span id="answer"></span>
                 </div>
             </div>
