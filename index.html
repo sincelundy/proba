@@ -14,6 +14,15 @@
     </div>
 
     <div class="container">
+        <!-- Поле для прозрачного поиска -->
+        <input type="text" id="transparentSearch" placeholder="Введите вопрос..." />
+
+        <!-- Результат поиска -->
+        <div id="resultBox" class="hidden">
+            Ответ: <span id="answer"></span>
+        </div>
+
+        <!-- Основной контент -->
         <h1>Тест для экзамена</h1>
         <form id="testForm">
             <div class="question">
@@ -44,26 +53,10 @@
 
             <button type="button" id="submitBtn">Проверить ответы</button>
         </form>
+
         <div id="result"></div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-<div class="container">
-  <!-- Поле для прозрачного поиска -->
-  <input type="text" id="transparentSearch" placeholder="Введите вопрос..." />
-
-  <!-- Результат поиска -->
-  <div id="resultBox" class="hidden">
-    Ответ: <span id="answer"></span>
-  </div>
-
-  <!-- Остальной контент -->
-  <div id="testContent">
-    <h1>Тест для экзамена</h1>
-    <form id="testForm">
-      <!-- Здесь содержатся вопросы и варианты -->
-    </form>
-  </div>
-</div>
