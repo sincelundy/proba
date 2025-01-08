@@ -70,16 +70,6 @@
   color: black;
 }
 
-/* Скрытие результата */
-.hidden {
-  display: none;
-}
-
-/* Отображение результата */
-.visible {
-  display: block;
-}
-
 /* Стили для кнопки */
 button {
   background-color: #4CAF50;
