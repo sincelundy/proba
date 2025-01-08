@@ -18,7 +18,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
 
     // Показываем результат
     const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = Вы набрали ${score} из ${Object.keys(correctAnswers).length} баллов.;
+    resultDiv.innerHTML = 'Вы набрали ${score} из ${Object.keys(correctAnswers).length} баллов.';
 });
 
 // База данных вопросов и ответов
