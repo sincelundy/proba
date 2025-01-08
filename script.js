@@ -38,7 +38,10 @@ function searchAnswer(query) {
 // Слушаем ввод текста в поле
 document.getElementById("transparentSearch").addEventListener("input", (event) => {
     const query = event.target.value.trim(); // Получаем текст из поля
+    console.log("Введённый текст: ", query); // Выводим введённый текст в консоль
+
     const answer = searchAnswer(query); // Ищем ответ
+    console.log("Найденный ответ: ", answer); // Выводим найденный ответ в консоль
 
     // Показываем результат
     const resultBox = document.getElementById("resultBox");
