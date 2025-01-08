@@ -1,3 +1,4 @@
+console.log("Скрипт подключён!") ;
 // Правильные ответы
 const correctAnswers = {
     q1: 'b',
