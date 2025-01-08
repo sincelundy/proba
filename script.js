@@ -33,7 +33,7 @@ const database = [
 function searchAnswer(query) {
     const searcher = new JuzzySearch(database, {
         key: 'question', // Указываем, что мы будем искать по полю "question"
-        threshold: 0.3, // Порог для нечеткого совпадения, чем меньше значение, тем точнее
+        threshold: 0.5, // Порог для нечеткого совпадения, чем меньше значение, тем точнее
         ignoreCase: true // Игнорируем регистр
     });
 
