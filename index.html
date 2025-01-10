@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тест для экзамена</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Подключение Fuse.js -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 </head>
 <body>
 
@@ -58,17 +60,14 @@
                 <input type="text" id="transparentSearch" placeholder="Введите вопрос..." />
 
                 <!-- Результат поиска -->
-                <div id="resultBox">
+                <div id="resultBox" class="hidden">
                     Ответ: <span id="answer"></span>
                 </div>
             </div>
         </div>
     </div>
-    <head>
-  <!-- Другие теги -->
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-</head>
 
+    <!-- Подключение скрипта -->
     <script src="script.js"></script>
 </body>
 </html>
