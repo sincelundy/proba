@@ -69,5 +69,6 @@ document.getElementById("transparentSearch").addEventListener("input", (event) =
     } else {
         resultBox.classList.remove("visible");
         resultBox.classList.add("hidden");
+        answerBox.textContent = ""; // Очищаем текст, когда поле ввода пустое
     }
 });
