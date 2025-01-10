@@ -29,7 +29,6 @@ const database = [
     { question: "Что делает JavaScript?", answer: "Добавляет интерактивность" }
 ];
 
-// Функция для поиска ответа с использованием Fuse.js
 function searchAnswer(query) {
     // Настройки Fuse.js
     const options = {
@@ -39,7 +38,7 @@ function searchAnswer(query) {
     };
 
     // Создаем новый экземпляр Fuse.js
-    const fuse = new Fuse(database, options);
+    const fuse = new Fuse(database, options);  // database - это твоя база данных вопросов и ответов
 
     // Поиск по запросу
     const results = fuse.search(query);
