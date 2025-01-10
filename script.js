@@ -29,17 +29,24 @@ const database = [
     { question: "Что делает JavaScript?", answer: "Добавляет интерактивность" }
 ];
 
-// Функция для поиска ответа с использованием Juzzy Search
+// Функция для поиска ответа с использованием Fuse.js
 function searchAnswer(query) {
-    const searcher = new JuzzySearch(database, {
-        key: 'question', // Указываем, что мы будем искать по полю "question"
-        threshold: 0.5, // Порог для нечеткого совпадения, чем меньше значение, тем точнее
-        ignoreCase: true // Игнорируем регистр
-    });
+    // Настройки Fuse.js
+    const options = {
+        includeScore: true,   // Учитывать совпадения
+        threshold: 0.3,       // Порог для поиска (чем ниже, тем точнее)
+        keys: ['question'],   // Ищем по полю "question"
+    };
 
-    const results = searcher.search(query);
+    // Создаем новый экземпляр Fuse.js
+    const fuse = new Fuse(database, options);
+
+    // Поиск по запросу
+    const results = fuse.search(query);
+
+    // Если найден результат, возвращаем ответ
     if (results.length > 0) {
-        return results[0].answer; // Возвращаем ответ на первый найденный вопрос
+        return results[0].item.answer; // Возвращаем ответ на первый найденный вопрос
     } else {
         return "Ответ не найден";
     }
