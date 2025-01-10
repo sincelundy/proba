@@ -50,7 +50,6 @@ function searchAnswer(query) {
         return "Ответ не найден";
     }
 }
-
 // Слушаем ввод текста в поле
 document.getElementById("transparentSearch").addEventListener("input", (event) => {
     const query = event.target.value.trim(); // Получаем текст из поля
