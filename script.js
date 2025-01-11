@@ -53,21 +53,22 @@ function searchAnswer(query) {
     return "Ответ не найден";
 }
 
-// Функция для обработки ввода в поле поиска
 function handleSearchInput(event) {
-    const query = event.target.value.trim();
+    const query = event.target.value.trim(); // Получаем введённый текст
     const resultBox = document.getElementById("resultBox");
     const answerBox = document.getElementById("answer");
 
     if (query.length > 0) {
-        const answer = searchAnswer(query);
+        const answer = searchAnswer(query); // Ищем ответ
+        console.log("Найденный ответ:", answer); // Логируем ответ
+
         resultBox.classList.remove("hidden");
         resultBox.classList.add("visible");
-        answerBox.textContent = answer;
+        answerBox.textContent = answer; // Обновляем текст
     } else {
         resultBox.classList.remove("visible");
         resultBox.classList.add("hidden");
-        answerBox.textContent = "";
+        answerBox.textContent = ""; // Очищаем текст
     }
 }
 
