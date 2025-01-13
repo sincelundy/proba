@@ -28,6 +28,20 @@ fetch('questions.json')
             form.appendChild(questionDiv);
         });
 
+        // Проверка результатов теста
+        document.getElementById('submitBtn').addEventListener('click', () => {
+            let score = 0;
+
+            data.forEach((item, index) => {
+                const selected = form.querySelector(`input[name="q${index}"]:checked`);
+                if (selected && selected.value === item.correct[0]) {
+                    score++;
+                }
+            });
+
+            resultDiv.textContent = `Вы набрали ${score} из ${data.length} баллов.`;
+        });
+
         // Обработка строки поиска
         document.getElementById('transparentSearch').addEventListener('input', (event) => {
             const query = event.target.value.trim();
