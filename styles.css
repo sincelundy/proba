@@ -1,9 +1,9 @@
 /* Стили для сине-голубого прямоугольника с текстом */
 .header {
-    background: linear-gradient(to right, #1e90ff, #87cefa); /* Синий и голубой градиент */
+    background: linear-gradient(to right, #1e90ff, #87cefa);
     color: white;
     text-align: center;
-    padding: 20px 0 10px 0; /* Добавлен нижний отступ */
+    padding: 20px 0;
     font-size: 24px;
     font-weight: bold;
     width: 100%;
@@ -14,41 +14,23 @@
     z-index: 1000;
 }
 
-/* Основной контейнер */
+/* Контейнер */
 .container {
-    margin-top: 80px; /* Отступ для фиксированного заголовка */
+    margin-top: 80px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Вертикальное выравнивание */
     font-family: Arial, sans-serif;
 }
 
-/* Контейнер для вопросов */
-.questions-container {
-    width: 100%;
-    max-width: 800px;
-    margin-bottom: 40px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 /* Вопросы */
-.question {
+.questions-container {
     margin-bottom: 20px;
 }
 
 .question p {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
-/* Радио-кнопки и ответы */
 label {
     font-size: 16px;
     cursor: pointer;
@@ -58,24 +40,7 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
-/* Кнопка проверки */
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Плавный переход */
-}
-
-button:hover {
-    background-color: #45a049;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавлен эффект тени */
-}
-
-/* Результат проверки */
+/* Результат */
 #result {
     margin-top: 20px;
     font-size: 18px;
@@ -85,10 +50,8 @@ button:hover {
 
 /* Строка поиска */
 .search-container {
-    width: 100%;
-    max-width: 800px;
     position: relative;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 #transparentSearch {
@@ -97,28 +60,18 @@ button:hover {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#transparentSearch:focus {
-    border-color: #1e90ff;
-    box-shadow: 0px 0px 5px rgba(30, 144, 255, 0.5);
-    outline: none;
-}
-
-/* Блок результата поиска */
 #resultBox {
     display: none;
     position: absolute;
     top: 50px;
     left: 0;
-    width: 100%;
-    background-color: #f9f9f9; /* Легкий серый фон */
+    background: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 15px; /* Увеличен отступ */
-    z-index: 100;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #resultBox.visible {
@@ -128,35 +81,4 @@ button:hover {
 #resultBox span {
     font-weight: bold;
     color: #1e90ff;
-}
-
-/* Стили для мобильных устройств */
-@media (max-width: 768px) {
-    .questions-container,
-    .search-container {
-        width: 100%;
-        padding: 15px;
-    }
-
-    button {
-        width: 100%;
-        font-size: 18px;
-    }
-
-    .question p {
-        font-size: 16px; /* Меньший размер шрифта для вопросов */
-    }
-
-    label {
-        font-size: 14px; /* Меньший размер шрифта для ответов */
-    }
-}
-
-/* Фокусное состояние для элементов формы */
-input[type="radio"]:focus {
-    outline: 2px solid #1e90ff;
-}
-
-#transparentSearch:focus {
-    outline: 2px solid #1e90ff;
 }
