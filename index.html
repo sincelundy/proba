@@ -1,25 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Стоматологичесĸий тест</title>
+    <title>Тест для экзамена</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Подключение Fuse.js -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 </head>
 <body>
-    <!-- Синий прямоугольниĸ -->
-    <div class="header">Стоматологичесĸий тест</div>
-    <!-- Основной ĸонтент -->
-    <div class="main-content">
-        <!-- Поисĸовая строĸа -->
-        <div class="search-container">
-            <input type="text" id="transparentSearch" placeholder="Введите вопрос">             <div id="resultBox" class="hidden">
-                <p id="answer"></p>
+
+    <!-- Сине-голубой прямоугольник с текстом -->
+    <div class="header">
+        Стоматология, 3 курс
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Контейнер для вопросов -->
+            <div class="questions-container">
+                <h1>Тест для экзамена</h1>
+                <form id="testForm">
+                    <div class="question">
+                        <p>Вопрос 1: Что такое HTML?</p>
+                        <label>
+                            <input type="radio" name="q1" value="a"> A) Язык программирования
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q1" value="b"> B) Язык разметки
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q1" value="c"> C) Операционная система
+                        </label><br>
+                    </div>
+
+                    <div class="question">
+                        <p>Вопрос 2: Что такое CSS?</p>
+                        <label>
+                            <input type="radio" name="q2" value="a"> A) Язык программирования
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q2" value="b"> B) Язык разметки
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q2" value="c"> C) Язык для стилизации веб-страниц
+                        </label><br>
+                    </div>
+
+                    <button type="button" id="submitBtn">Проверить ответы</button>
+                </form>
+
+                <!-- Выводим результат проверки -->
+                <div id="result"></div>
+            </div>
+
+            <!-- Контейнер для строки поиска -->
+            <div class="search-container">
+                <!-- Поле для поиска -->
+                <input type="text" id="transparentSearch" placeholder="Введите вопрос..." />
+
+                <!-- Результат поиска -->
+                <div id="resultBox" class="hidden">
+                    Ответ: <span id="answer"></span>
+                </div>
             </div>
         </div>
-        <!-- Вопросы -->
-        <form id="testForm" class="questions-container">
-            <!-- Вопросы будут динамичесĸи добавляться через JS -->         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>     <script src="script.js"></script>
-</body> </html>
+
+    <!-- Подключение скрипта -->
+    <script src="script.js"></script>
+</body>
+</html>
