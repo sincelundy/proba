@@ -1,10 +1,17 @@
 console.log("Скрипт подключён!");
 
-// Правильные ответы
-const correctAnswers = {
-    q1: 'b',
-    q2: 'c'
-};
+// Функция для загрузки JSON файла с вопросами и ответами
+async function loadQuestions() {
+    try {
+        const response = await fetch('questions.json');
+        const questionsData = await response.json();
+        console.log("Загруженные вопросы:", questionsData);
+        return questionsData;
+    } catch (error) {
+        console.error("Ошибка при загрузке JSON файла:", error);
+        return [];
+    }
+}
 
 // Функция для проверки теста
 function checkAnswers() {
@@ -27,39 +34,17 @@ function checkAnswers() {
 // Добавляем обработчик на кнопку проверки
 document.getElementById('submitBtn').addEventListener('click', checkAnswers);
 
-// База данных вопросов и ответов
-const database = [
-    { question: "Что такое HTML?", answer: "Язык разметки" },
-    { question: "Что такое CSS?", answer: "Язык для стилизации веб-страниц" },
-    { question: "Что делает JavaScript?", answer: "Добавляет интерактивность" }
-];
-
-// Настройки Fuse.js
-const fuseOptions = {
-    includeScore: false, // Не показываем счёт
-    threshold: 0.3, // Порог совпадения
-    keys: ['question'] // Ищем только по вопросам
-};
-
-// Создаём экземпляр Fuse.js
-const fuse = new Fuse(database, fuseOptions);
-
-// Функция для поиска ответа
-function searchAnswer(query) {
-    const results = fuse.search(query.trim());
-    if (results.length > 0) {
-        return results[0].item.answer; // Возвращаем первый найденный ответ
-    }
-    return "Ответ не найден";
-}
-
-function handleSearchInput(event) {
+// Настройки Fuse.js для поиска
+async function handleSearchInput(event) {
     const query = event.target.value.trim(); // Получаем введённый текст
     const resultBox = document.getElementById("resultBox");
     const answerBox = document.getElementById("answer");
 
+    // Загружаем данные из JSON
+    const database = await loadQuestions();
+
     if (query.length > 0) {
-        const answer = searchAnswer(query); // Ищем ответ
+        const answer = searchAnswer(query, database); // Ищем ответ
         console.log("Найденный ответ:", answer); // Логируем ответ
 
         resultBox.classList.remove("hidden");
@@ -72,6 +57,21 @@ function handleSearchInput(event) {
     }
 }
 
+// Функция для поиска ответа по вопросу
+function searchAnswer(query, database) {
+    const fuseOptions = {
+        includeScore: false,  // Не показываем счёт
+        threshold: 0.3,       // Порог совпадения
+        keys: ['question']    // Ищем только по вопросам
+    };
+
+    const fuse = new Fuse(database, fuseOptions);
+    const results = fuse.search(query.trim());
+    if (results.length > 0) {
+        return results[0].item.answer; // Возвращаем первый найденный ответ
+    }
+    return "Ответ не найден";
+}
+
 // Добавляем обработчик на поле поиска
 document.getElementById("transparentSearch").addEventListener("input", handleSearchInput);
-
