@@ -1,353 +1,143 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест для экзамена</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Тестовые вопросы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(to right, #1e90ff, #87cefa);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .main-content {
+            margin: 100px auto;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .question {
+            padding: 15px 0;
+            border-bottom: 1px solid lightgray;
+        }
+
+        .question p {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .question label {
+            display: block;
+            margin: 5px 0;
+            color: black;
+            font-weight: normal;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type="radio"]:checked {
+            background-color: black;
+        }
+
+        #transparentSearch {
+            opacity: 0.5;
+            border: 1px solid gray;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+            transition: opacity 0.3s;
+        }
+
+        #transparentSearch:focus {
+            opacity: 1;
+            outline: none;
+        }
+
+        #resultBox {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .visible {
+            display: block;
+        }
+    </style>
 </head>
 <body>
+    <div class="header">Тестовые вопросы</div>
+    <div class="main-content">
+        <input type="text" id="transparentSearch" placeholder="Введите вопрос">
+        <div id="resultBox"></div>
 
-    <!-- Сине-голубой прямоугольник с текстом -->
-    <div class="header">
-        Стоматология, 3 курс
-    </div>
-
-    <div class="container">
-        <div class="main-content">
-            <!-- Контейнер для вопросов -->
-            <div class="questions-container">
-                <h1>Тест для экзамена</h1>
-                <form id="testForm">
-                    <!-- Вопросы -->
-                    <div class="question">
-                        <p>33) Какое из утверждений, касающихся нижнего второго моляра с С-образными каналами, является справедливым?</p>
-                        <label>
-                            <input type="radio" name="q33" value="a"> A) Моляр имеет три канала
-                        </label>
-                        <label>
-                            <input type="radio" name="q33" value="b"> B) Каналы всегда сужаются к апексу
-                        </label>
-                        <label>
-                            <input type="radio" name="q33" value="c"> C) Каналы имеют форму буквы "С"
-                        </label>
-                        <label>
-                            <input type="radio" name="q33" value="d"> D) Каналы бывают только прямыми
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>34) Какое из утверждений, относящихся к процессу развития зуба, является справедливым?</p>
-                        <label>
-                            <input type="radio" name="q34" value="a"> A) Зубы развиваются только в период с рождения до 3 лет
-                        </label>
-                        <label>
-                            <input type="radio" name="q34" value="b"> B) Основной процесс начинается на 7-8 месяце беременности
-                        </label>
-                        <label>
-                            <input type="radio" name="q34" value="c"> C) Процесс завершения развития зуба не зависит от генетики
-                        </label>
-                        <label>
-                            <input type="radio" name="q34" value="d"> D) У всех людей зубы развиваются одинаково
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>35) Какое из утверждений наилучшим образом описывает волокна Корфа?</p>
-                        <label>
-                            <input type="radio" name="q35" value="a"> A) Это волокна, связанные с периферическими нервами
-                        </label>
-                        <label>
-                            <input type="radio" name="q35" value="b"> B) Волокна, которые расположены в области пульпы зуба
-                        </label>
-                        <label>
-                            <input type="radio" name="q35" value="c"> C) Волокна, обеспечивающие связь между пульпой и тканями зуба
-                        </label>
-                        <label>
-                            <input type="radio" name="q35" value="d"> D) Это волокна, образующие наружную оболочку зуба
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>36) Какое из следующих утверждений, относящихся к развитию корня, не является верным?</p>
-                        <label>
-                            <input type="radio" name="q36" value="a"> A) Корень развивается после завершения формирования коронки
-                        </label>
-                        <label>
-                            <input type="radio" name="q36" value="b"> B) Формирование корня прекращается сразу после прорезывания зуба
-                        </label>
-                        <label>
-                            <input type="radio" name="q36" value="c"> C) Образование корня связано с развитием дентинных каналов
-                        </label>
-                        <label>
-                            <input type="radio" name="q36" value="d"> D) Корень формируется за счет одонтобластов
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>37) Какое из следующих утверждений, относящихся к дентину, является правильным?</p>
-                        <label>
-                            <input type="radio" name="q37" value="a"> A) Дентин не имеет нервных окончаний
-                        </label>
-                        <label>
-                            <input type="radio" name="q37" value="b"> B) Дентин является наиболее твердым веществом в зубе
-                        </label>
-                        <label>
-                            <input type="radio" name="q37" value="c"> C) Дентин имеет способность к самовосстановлению
-                        </label>
-                        <label>
-                            <input type="radio" name="q37" value="d"> D) Дентин может меняться с возрастом
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>38) Какое из следующих утверждений, относящихся к трубчатому строению дентина, является верным?</p>
-                        <label>
-                            <input type="radio" name="q38" value="a"> A) Дентин состоит из тонких трубочек, заполненных жидкостью
-                        </label>
-                        <label>
-                            <input type="radio" name="q38" value="b"> B) Трубочки дентина пустые и не содержат никаких веществ
-                        </label>
-                        <label>
-                            <input type="radio" name="q38" value="c"> C) Трубочки дентина содержат клетки одонтобласты
-                        </label>
-                        <label>
-                            <input type="radio" name="q38" value="d"> D) Трубочки заполняются минерализованным веществом
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>39) Какое из следующих утверждений, относящихся к проницаемости дентина, является справедливым?</p>
-                        <label>
-                            <input type="radio" name="q39" value="a"> A) Дентин проницаем только для жидкостей
-                        </label>
-                        <label>
-                            <input type="radio" name="q39" value="b"> B) Проницаемость дентина зависит от его степени минерализации
-                        </label>
-                        <label>
-                            <input type="radio" name="q39" value="c"> C) Проницаемость дентина одинаковая по всему зубу
-                        </label>
-                        <label>
-                            <input type="radio" name="q39" value="d"> D) Дентин не проницаем
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>40) Какое из следующих утверждений, относящихся к непроницаемым перегородкам в слое одонтобластов, является верным?</p>
-                        <label>
-                            <input type="radio" name="q40" value="a"> A) Перегородки препятствуют проникновению веществ в пульпу
-                        </label>
-                        <label>
-                            <input type="radio" name="q40" value="b"> B) Перегородки действуют только на физическом уровне
-                        </label>
-                        <label>
-                            <input type="radio" name="q40" value="c"> C) Перегородки предотвращают воспалительные реакции
-                        </label>
-                        <label>
-                            <input type="radio" name="q40" value="d"> D) Перегородки блокируют инфекцию
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>41) Какое из следующих утверждений, относящихся к отростчатым клеткам, не является верным?</p>
-                        <label>
-                            <input type="radio" name="q41" value="a"> A) Эти клетки участвуют в минерализации дентина
-                        </label>
-                        <label>
-                            <input type="radio" name="q41" value="b"> B) Они могут переходить в одонтобласты
-                        </label>
-                        <label>
-                            <input type="radio" name="q41" value="c"> C) Эти клетки способствуют образованию эмали
-                        </label>
-                        <label>
-                            <input type="radio" name="q41" value="d"> D) Они производят коллаген
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>251) Определите, к протеолитическим ферментам относят:</p>
-                        <label>
-                            <input type="radio" name="q251" value="a"> A) Химотрипсин
-                        </label>
-                        <label>
-                            <input type="radio" name="q251" value="b"> B) Лизоцим
-                        </label>
-                        <label>
-                            <input type="radio" name="q251" value="c"> C) Пепсин
-                        </label>
-                        <label>
-                            <input type="radio" name="q251" value="d"> D) Все перечисленные ферменты
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>252) Определите варианты лечения хронического деструктивного периодонтита без свища в первое посещение:</p>
-                        <label>
-                            <input type="radio" name="q252" value="a"> A) Хирургическое лечение
-                        </label>
-                        <label>
-                            <input type="radio" name="q252" value="b"> B) Лечение антибиотиками
-                        </label>
-                        <label>
-                            <input type="radio" name="q252" value="c"> C) Консервативное лечение
-                        </label>
-                        <label>
-                            <input type="radio" name="q252" value="d"> D) Все ответы верны
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>253) Определите, импрегнирующая смесь накладывается на:</p>
-                        <label>
-                            <input type="radio" name="q253" value="a"> A) Коронку
-                        </label>
-                        <label>
-                            <input type="radio" name="q253" value="b"> B) Корневой канал
-                        </label>
-                        <label>
-                            <input type="radio" name="q253" value="c"> C) Внешнюю поверхность зуба
-                        </label>
-                        <label>
-                            <input type="radio" name="q253" value="d"> D) Все варианты верны
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>254) Какой из перечисленных факторов является основным для перехода пульпита из острого состояния в хроническое?</p>
-                        <label>
-                            <input type="radio" name="q254" value="a"> A) Продолжительность заболевания
-                        </label>
-                        <label>
-                            <input type="radio" name="q254" value="b"> B) Состояние иммунной системы
-                        </label>
-                        <label>
-                            <input type="radio" name="q254" value="c"> C) Возраст пациента
-                        </label>
-                        <label>
-                            <input type="radio" name="q254" value="d"> D) Неэффективность лечения
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>255) Какой из препаратов чаще всего используется для стерилизации корневых каналов при лечении пульпита?</p>
-                        <label>
-                            <input type="radio" name="q255" value="a"> A) Формалдецид
-                        </label>
-                        <label>
-                            <input type="radio" name="q255" value="b"> B) Хлоргексидин
-                        </label>
-                        <label>
-                            <input type="radio" name="q255" value="c"> C) Пероксид водорода
-                        </label>
-                        <label>
-                            <input type="radio" name="q255" value="d"> D) Лаванда
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>256) Какие из следующих симптомов являются характерными для хронического пульпита с гиперемией?</p>
-                        <label>
-                            <input type="radio" name="q256" value="a"> A) Длительная зубная боль
-                        </label>
-                        <label>
-                            <input type="radio" name="q256" value="b"> B) Повышенная чувствительность к температурным раздражителям
-                        </label>
-                        <label>
-                            <input type="radio" name="q256" value="c"> C) Явная болезненность при ощупывании
-                        </label>
-                        <label>
-                            <input type="radio" name="q256" value="d"> D) Все ответы верны
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>257) Какой из методов диагностики используется для определения состояния пульпы и ее воспаления?</p>
-                        <label>
-                            <input type="radio" name="q257" value="a"> A) Электротестирование
-                        </label>
-                        <label>
-                            <input type="radio" name="q257" value="b"> B) Рентгенографическое исследование
-                        </label>
-                        <label>
-                            <input type="radio" name="q257" value="c"> C) Термическое тестирование
-                        </label>
-                        <label>
-                            <input type="radio" name="q257" value="d"> D) Все вышеперечисленные
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>258) Какую роль в развитии пульпита играет гиперчувствительность зуба к температурным раздражителям?</p>
-                        <label>
-                            <input type="radio" name="q258" value="a"> A) Усиливает воспаление
-                        </label>
-                        <label>
-                            <input type="radio" name="q258" value="b"> B) Является симптомом пульпита
-                        </label>
-                        <label>
-                            <input type="radio" name="q258" value="c"> C) Обостряет болезненные ощущения
-                        </label>
-                        <label>
-                            <input type="radio" name="q258" value="d"> D) Все верно
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>292) Какое лечение рекомендуется при обнаружении выраженной кальцификации в корневом канале при гармулематозном периодонтите?</p>
-                        <label>
-                            <input type="radio" name="q292" value="a"> A) Применение кальцийсодержащих препаратов
-                        </label>
-                        <label>
-                            <input type="radio" name="q292" value="b"> B) Хирургическое вмешательство
-                        </label>
-                        <label>
-                            <input type="radio" name="q292" value="c"> C) Применение антибактериальной терапии
-                        </label>
-                        <label>
-                            <input type="radio" name="q292" value="d"> D) Применение раствора серума
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>293) Какую роль играет стерильная техника в лечении гармулематозного периодонтита?</p>
-                        <label>
-                            <input type="radio" name="q293" value="a"> A) Предотвращает инфицирование корневого канала
-                        </label>
-                        <label>
-                            <input type="radio" name="q293" value="b"> B) Обеспечивает успешное лечение
-                        </label>
-                        <label>
-                            <input type="radio" name="q293" value="c"> C) Является важным фактором для предотвращения осложнений
-                        </label>
-                        <label>
-                            <input type="radio" name="q293" value="d"> D) Все ответы верны
-                        </label>
-                    </div>
-
-                    <div class="question">
-                        <p>294) При каком из заболеваний следует исключить диагноз гармулематозного периодонтита на основе рентгенологического исследования?</p>
-                        <label>
-                            <input type="radio" name="q294" value="a"> A) Периапикальный остеомиелит
-                        </label>
-                        <label>
-                            <input type="radio" name="q294" value="b"> B) Остеопороз
-                        </label>
-                        <label>
-                            <input type="radio" name="q294" value="c"> C) Хронический периодонтит
-                        </label>
-                        <label>
-                            <input type="radio" name="q294" value="d"> D) Все ответы верны
-                        </label>
-                    </div>
-
-                    <button type="button" id="submitBtn">Жөнөтүү</button>
-                </form>
-
-                <!-- Выводим результат проверки -->
-                <div id="result"></div>
+        <form id="testForm">
+            <!-- Вопросы вставлены здесь -->
+            <div class="question">
+                <p>33) Какое из утверждений, касающихся нижнего второго моляра с С-образными каналами, является справедливым?</p>
+                <label>
+                    <input type="radio" name="q33" value="a"> A) Утверждение 1
+                </label>
+                <label>
+                    <input type="radio" name="q33" value="b"> B) Утверждение 2
+                </label>
+                <label>
+                    <input type="radio" name="q33" value="c"> C) Утверждение 3
+                </label>
+                <label>
+                    <input type="radio" name="q33" value="d"> D) Утверждение 4
+                </label>
             </div>
-        </div>
+            <!-- Остальные вопросы -->
+        </form>
+        <div id="result"></div>
     </div>
+    <script>
+        // JavaScript-код для работы поиска и проверки
+        const searchInput = document.getElementById('transparentSearch');
+        const resultBox = document.getElementById('resultBox');
 
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.trim();
+            if (query.length > 0) {
+                resultBox.textContent = `Результаты для: ${query}`;
+                resultBox.classList.add('visible');
+            } else {
+                resultBox.classList.remove('visible');
+            }
+        });
+
+        searchInput.addEventListener('blur', function () {
+            resultBox.classList.remove('visible');
+        });
+    </script>
 </body>
 </html>
