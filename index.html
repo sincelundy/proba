@@ -21,33 +21,7 @@
             <div class="questions-container">
                 <h1>Тест для экзамена</h1>
                 <form id="testForm">
-                    <div class="question">
-                        <p>Вопрос 1: Что такое HTML?</p>
-                        <label>
-                            <input type="radio" name="q1" value="a"> A) Язык программирования
-                        </label><br>
-                        <label>
-                            <input type="radio" name="q1" value="b"> B) Язык разметки
-                        </label><br>
-                        <label>
-                            <input type="radio" name="q1" value="c"> C) Операционная система
-                        </label><br>
-                    </div>
-
-                    <div class="question">
-                        <p>Вопрос 2: Что такое CSS?</p>
-                        <label>
-                            <input type="radio" name="q2" value="a"> A) Язык программирования
-                        </label><br>
-                        <label>
-                            <input type="radio" name="q2" value="b"> B) Язык разметки
-                        </label><br>
-                        <label>
-                            <input type="radio" name="q2" value="c"> C) Язык для стилизации веб-страниц
-                        </label><br>
-                    </div>
-
-                    <button type="button" id="submitBtn">Проверить ответы</button>
+                    <!-- Вопросы будут динамически добавлены из JSON -->
                 </form>
 
                 <!-- Выводим результат проверки -->
@@ -68,6 +42,69 @@
     </div>
 
     <!-- Подключение скрипта -->
-    <script src="script.js"></script>
+    <script>
+        // Загружаем JSON с вопросами
+        fetch('questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const form = document.getElementById('testForm');
+                const fuse = new Fuse(data, {
+                    keys: ['question'], // Настройка поиска
+                    threshold: 0.3 // Порог совпадения
+                });
+
+                // Динамическое добавление вопросов в форму
+                data.forEach((item, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.classList.add('question');
+
+                    questionDiv.innerHTML = `
+                        <p>${item.question}</p>
+                        ${item.answers.map((answer, i) => `
+                            <label>
+                                <input type="radio" name="q${index}" value="${String.fromCharCode(65 + i)}">
+                                ${answer}
+                            </label><br>
+                        `).join('')}
+                    `;
+                    form.appendChild(questionDiv);
+                });
+
+                // Проверка результатов
+                document.getElementById('submitBtn').addEventListener('click', () => {
+                    let score = 0;
+                    data.forEach((item, index) => {
+                        const selected = form.querySelector(`input[name="q${index}"]:checked`);
+                        if (selected && selected.value === item.correct[0]) {
+                            score++;
+                        }
+                    });
+                    document.getElementById('result').textContent = `Вы набрали ${score} из ${data.length} баллов.`;
+                });
+
+                // Обработка строки поиска
+                document.getElementById("transparentSearch").addEventListener("input", (event) => {
+                    const query = event.target.value.trim();
+                    const resultBox = document.getElementById("resultBox");
+                    const answerBox = document.getElementById("answer");
+
+                    if (query.length > 0) {
+                        const result = fuse.search(query);
+                        if (result.length > 0) {
+                            answerBox.textContent = result[0].item.correct;
+                        } else {
+                            answerBox.textContent = "Ответ не найден";
+                        }
+                        resultBox.classList.remove("hidden");
+                        resultBox.classList.add("visible");
+                    } else {
+                        resultBox.classList.remove("visible");
+                        resultBox.classList.add("hidden");
+                        answerBox.textContent = "";
+                    }
+                });
+            })
+            .catch(error => console.error('Ошибка загрузки JSON:', error));
+    </script>
 </body>
 </html>
