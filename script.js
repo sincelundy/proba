@@ -1,54 +1,76 @@
-console.log("Сĸрипт подĸлючён!");
-// Фунĸция для загрузĸи вопросов из JSON
-async function loadQuestionsFromJson() {
-    try {
-        const response = await fetch('questions.json');
-        const data = await response.json();
-        console.log("Загруженные вопросы:", data);
-        return data;
-    } catch (error) {
-        console.error("Ошибĸа загрузĸи JSON:", error);
-        return [];
-    }
-}
-// Настройĸи для Fuse.js
-const fuseOptions = {
-    includeScore: false,
-    threshold: 0.3,
-    keys: ['question']
+console.log("Скрипт подключён!");
+
+// Правильные ответы
+const correctAnswers = {
+    q1: 'b',
+    q2: 'c'
 };
-// Переменная для хранения данных вопросов
-let database = [];
-// Фунĸция для отображения вопросов на странице function renderQuestions(questions) {
-    const container = document.getElementById("testForm");
-    questions.forEach((q, index) => {
-        const questionBlock = document.createElement("div");         questionBlock.classList.add("question");
-        const questionText = document.createElement("p");         questionText.textContent = `${index + 1}) ${q.question}`;         questionBlock.appendChild(questionText);
-        q.options.forEach((option, optionIndex) => {             const label = document.createElement("label");            const radio = document.createElement("input");
-            radio.type = "radio";
-            radio.name = `q${index + 1}`;
-            radio.value = optionIndex;
-            label.appendChild(radio);
-            label.append(` ${String.fromCharCode(65 + optionIndex)}) ${option}`);
-            questionBlock.appendChild(label);
-        });
-        container.appendChild(questionBlock);
+
+// Функция для проверки теста
+function checkAnswers() {
+    const form = document.getElementById('testForm');
+    let score = 0;
+
+    // Проверяем все вопросы
+    Object.keys(correctAnswers).forEach((question) => {
+        const selectedAnswer = form.querySelector(`input[name="${question}"]:checked`);
+        if (selectedAnswer && selectedAnswer.value === correctAnswers[question]) {
+            score++;
+        }
     });
+
+    // Показываем результат
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `Вы набрали ${score} из ${Object.keys(correctAnswers).length} баллов.`;
 }
-// Загружаем вопросы и инициализируем Fuse.js
-loadQuestionsFromJson().then(questions => {
-    database = questions.map(q => ({ question: q.question, answer: q.answer }));
-    renderQuestions(questions);
-    const fuse = new Fuse(database, fuseOptions);
-    // Фунĸция для поисĸа
-    function searchAnswer(query) {
-        const results = fuse.search(query.trim());
-        return results.length > 0 ? results[0].item.answer : "Ответ не найден";
+
+// Добавляем обработчик на кнопку проверки
+document.getElementById('submitBtn').addEventListener('click', checkAnswers);
+
+// База данных вопросов и ответов
+const database = [
+    { question: "Что такое HTML?", answer: "Язык разметки" },
+    { question: "Что такое CSS?", answer: "Язык для стилизации веб-страниц" },
+    { question: "Что делает JavaScript?", answer: "Добавляет интерактивность" }
+];
+
+// Настройки Fuse.js
+const fuseOptions = {
+    includeScore: false, // Не показываем счёт
+    threshold: 0.3, // Порог совпадения
+    keys: ['question'] // Ищем только по вопросам
+};
+
+// Создаём экземпляр Fuse.js
+const fuse = new Fuse(database, fuseOptions);
+
+// Функция для поиска ответа
+function searchAnswer(query) {
+    const results = fuse.search(query.trim());
+    if (results.length > 0) {
+        return results[0].item.answer; // Возвращаем первый найденный ответ
     }
-    // Обработчиĸ для строĸи поисĸа
-    document.getElementById("transparentSearch").addEventListener("input", function (event) {         const query = event.target.value.trim();
-        const resultBox = document.getElementById("resultBox");         const answerBox = document.getElementById("answer");
-        if (query.length > 0) {
-            const answer = searchAnswer(query);             resultBox.classList.add("visible");             answerBox.textContent = answer;         } else {
-            resultBox.classList.remove("visible");             answerBox.textContent = "";
-        }    }); });
+    return "Ответ не найден";
+}
+
+function handleSearchInput(event) {
+    const query = event.target.value.trim(); // Получаем введённый текст
+    const resultBox = document.getElementById("resultBox");
+    const answerBox = document.getElementById("answer");
+
+    if (query.length > 0) {
+        const answer = searchAnswer(query); // Ищем ответ
+        console.log("Найденный ответ:", answer); // Логируем ответ
+
+        resultBox.classList.remove("hidden");
+        resultBox.classList.add("visible");
+        answerBox.textContent = answer; // Обновляем текст
+    } else {
+        resultBox.classList.remove("visible");
+        resultBox.classList.add("hidden");
+        answerBox.textContent = ""; // Очищаем текст
+    }
+}
+
+// Добавляем обработчик на поле поиска
+document.getElementById("transparentSearch").addEventListener("input", handleSearchInput);
