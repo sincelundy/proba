@@ -3,141 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тестовые вопросы</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .header {
-            background: linear-gradient(to right, #1e90ff, #87cefa);
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 24px;
-            font-weight: bold;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .main-content {
-            margin: 100px auto;
-            padding: 20px;
-            max-width: 800px;
-        }
-
-        .question {
-            padding: 15px 0;
-            border-bottom: 1px solid lightgray;
-        }
-
-        .question p {
-            font-weight: bold;
-            color: #1e3c72;
-        }
-
-        .question label {
-            display: block;
-            margin: 5px 0;
-            color: black;
-            font-weight: normal;
-        }
-
-        input[type="radio"] {
-            appearance: none;
-            margin-right: 8px;
-            width: 18px;
-            height: 18px;
-            border: 2px solid #000;
-            border-radius: 50%;
-            outline: none;
-            cursor: pointer;
-        }
-
-        input[type="radio"]:checked {
-            background-color: black;
-        }
-
-        #transparentSearch {
-            opacity: 0.5;
-            border: 1px solid gray;
-            padding: 8px;
-            border-radius: 5px;
-            font-size: 16px;
-            width: 100%;
-            max-width: 300px;
-            transition: opacity 0.3s;
-        }
-
-        #transparentSearch:focus {
-            opacity: 1;
-            outline: none;
-        }
-
-        #resultBox {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-top: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .visible {
-            display: block;
-        }
-    </style>
+    <title>Стоматологичесĸий тест</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">Тестовые вопросы</div>
+    <!-- Синий прямоугольниĸ -->
+    <div class="header">Стоматологичесĸий тест</div>
+    <!-- Основной ĸонтент -->
     <div class="main-content">
-        <input type="text" id="transparentSearch" placeholder="Введите вопрос">
-        <div id="resultBox"></div>
-
-        <form id="testForm">
-            <!-- Вопросы вставлены здесь -->
-            <div class="question">
-                <p>33) Какое из утверждений, касающихся нижнего второго моляра с С-образными каналами, является справедливым?</p>
-                <label>
-                    <input type="radio" name="q33" value="a"> A) Утверждение 1
-                </label>
-                <label>
-                    <input type="radio" name="q33" value="b"> B) Утверждение 2
-                </label>
-                <label>
-                    <input type="radio" name="q33" value="c"> C) Утверждение 3
-                </label>
-                <label>
-                    <input type="radio" name="q33" value="d"> D) Утверждение 4
-                </label>
+        <!-- Поисĸовая строĸа -->
+        <div class="search-container">
+            <input type="text" id="transparentSearch" placeholder="Введите вопрос">             <div id="resultBox" class="hidden">
+                <p id="answer"></p>
             </div>
-            <!-- Остальные вопросы -->
-        </form>
-        <div id="result"></div>
+        </div>
+        <!-- Вопросы -->
+        <form id="testForm" class="questions-container">
+            <!-- Вопросы будут динамичесĸи добавляться через JS -->         </form>
     </div>
-    <script>
-        // JavaScript-код для работы поиска и проверки
-        const searchInput = document.getElementById('transparentSearch');
-        const resultBox = document.getElementById('resultBox');
-
-        searchInput.addEventListener('input', function () {
-            const query = searchInput.value.trim();
-            if (query.length > 0) {
-                resultBox.textContent = `Результаты для: ${query}`;
-                resultBox.classList.add('visible');
-            } else {
-                resultBox.classList.remove('visible');
-            }
-        });
-
-        searchInput.addEventListener('blur', function () {
-            resultBox.classList.remove('visible');
-        });
-    </script>
-</body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>     <script src="script.js"></script>
+</body> </html>
