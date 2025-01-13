@@ -1,98 +1,143 @@
 /* Стили для сине-голубого прямоугольника с текстом */
 .header {
-  background: linear-gradient(to right, #1e90ff, #87cefa); /* Синий и голубой градиент */
-  color: white;
-  text-align: center;
-  padding: 20px 0; /* Отступы сверху и снизу */
-  font-size: 24px;
-  font-weight: bold;
-  width: 100%;
-  box-sizing: border-box; /* Чтобы учитывались отступы */
-  position: fixed;
-  top: 0; /* Чтобы прямоугольник был сверху страницы */
-  left: 0;
-  z-index: 1000; /* Чтобы прямоугольник был поверх других элементов */
+    background: linear-gradient(to right, #1e90ff, #87cefa); /* Синий и голубой градиент */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-/* Основной контейнер с вопросами и строкой поиска */
-.main-content {
-  display: flex; /* Используем flexbox для выравнивания элементов */
-  justify-content: space-between; /* Разделяем вопросы и поиск */
-  align-items: flex-start; /* Выравниваем элементы по верху */
-  margin-top: 80px; /* Отступ для главного контента */
+/* Основной контейнер */
+.container {
+    margin-top: 80px; /* Отступ для фиксированного заголовка */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
 }
 
 /* Контейнер для вопросов */
 .questions-container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  width: 70%; /* Ширина для вопросов */
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Вопросы */
+.question {
+    margin-bottom: 20px;
+}
+
+.question p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Радио-кнопки и ответы */
+label {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Кнопка проверки */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Результат проверки */
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
 }
 
 /* Строка поиска */
 .search-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    margin-bottom: 20px;
 }
 
 #transparentSearch {
-  opacity: 0.2; /* Прозрачное поле */
-  border: none;
-  outline: none;
-  background-color: transparent;
-  color: black;
-  font-size: 16px;
-  width: 300px; /* Ширина поля */
-  transition: opacity 0.3s ease-in-out;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#transparentSearch:hover,
 #transparentSearch:focus {
-  opacity: 1; /* Поле становится видимым */
-  background-color: white;
-  border: 1px solid gray;
+    border-color: #1e90ff;
+    box-shadow: 0px 0px 5px rgba(30, 144, 255, 0.5);
+    outline: none;
 }
 
-/* Блок для отображения результата */
+/* Блок результата поиска */
 #resultBox {
-  display: none; /* По умолчанию скрыт */
-  position: absolute;
-  top: 60px; /* Расстояние от поля ввода */
-  left: 0;
-  background-color: #f1f1f1;
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 300px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  color: black;
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 100;
 }
 
-/* Скрытие результата */
-.hidden {
-  display: none !important;
-  opacity: 0;
-  pointer-events: none; /* Отключает возможность взаимодействия */
+#resultBox.visible {
+    display: block;
 }
 
-/* Отображение результата */
-.visible {
-  display: block !important;
-  opacity: 1;
-  pointer-events: all; /* Включает возможность взаимодействия */
+#resultBox span {
+    font-weight: bold;
+    color: #1e90ff;
 }
 
-/* Стили для кнопки */
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    .questions-container,
+    .search-container {
+        width: 100%;
+        padding: 15px;
+    }
 
-button:hover {
-  background-color: #45a049;
+    button {
+        width: 100%;
+        font-size: 18px;
+    }
 }
